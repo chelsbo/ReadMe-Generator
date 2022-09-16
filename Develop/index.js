@@ -155,13 +155,11 @@ inquirer
     }
 ]
 )
-// .then((answers) => {
-// })
 
 then(({
     titles
 })=>{
-    const template = `# ${title}
+    const template = `# ${answers.title}
     * [Description]($description)
     * [Motivation]($motivation)
     * [Why]($why)
@@ -171,21 +169,21 @@ then(({
     * [Collabs]($collabs)
     * [Licenses]($licenses)
     # Description
-    ${description}}
+    ${answers.description}}
     ## Motivation
-    ${motivation}
+    ${answers.motivation}
     ## Why
-    ${why}
+    ${answers.why}
     ## Solved
-    ${solved}
+    ${answers.solved}
     ## What
-    ${what}
+    ${answers.what}
     ## Install
-    ${Install}
+    ${answers.Install}
     ## Collabs
-    ${collabs}
+    ${answers.collabs}
     ##Licenses
-    ${licenses}
+    ${answers.licenses}
 
     # Contact
     *GitHub:${git}
