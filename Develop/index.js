@@ -7,8 +7,8 @@ const { message } = require('statuses');
 const questions = ([
     {
         type: 'input',
-        message: '',
-        name:'',
+        message: 'title',
+        name:'What is the name of your application?',
         validate: (value)=>{ if(value){return true} else{return 'Invalid Value'}},
     },
     {
