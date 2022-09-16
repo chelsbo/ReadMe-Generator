@@ -1,7 +1,7 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
-const generateMarkdown = require('./utils.generateMarkdown.js');
+// const generateMarkdown = require('./utils.generateMarkdown.js');
 console.log ("Welcome to the READme Generator")
 console.log ("Please provide answers to the following questions")
 
@@ -202,13 +202,13 @@ console.log('Your ReadMe has been generated');
 }
 
 // TODO: Create a function to initialize app
-function init() {
-    inquirer.prompt(questions)
-    .then(function (userInput){
-        console.log(userInput)
-        writeToFile("README.md", generateMarkdown(userInput));
-    });
-};
+// function init() {
+//     inquirer.prompt(questions)
+//     .then(function (userInput){
+//         console.log(userInput)
+//         writeToFile("README.md", generateMarkdown(userInput));
+//     });
+// };
 
 // Function call to initialize app
-init();
+// init()
