@@ -156,9 +156,7 @@ inquirer
 ]
 )
 
-then(({
-    titles
-})=>{
+.then((answers) => {
     const template = `# ${answers.title}
     * [Description]($description)
     * [Motivation]($motivation)
@@ -186,9 +184,9 @@ then(({
     ${answers.licenses}
 
     # Contact
-    *GitHub:${git}
-    *LinkedIn :${linkedin}
-    #Email: ${email}`;
+    *GitHub : ${git}
+    *LinkedIn : ${linkedin}
+    #Email : ${email}`;
 
 }
 )
@@ -196,7 +194,7 @@ then(({
 // })
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
-    fs.writeToFile(`./${fileName.toLowerCase(x).split('').join('').md ,data,(err)=>{
+    fs.writeFile(`./${fileName.toLowerCase(x).split('').join('').md ,template,(err)=>{
 if(err){
     console.log(err)
 }
@@ -208,14 +206,14 @@ console.log('Your ReadMe has been generated');
 
 
 // TODO: Create a function to initialize app
-function init() {
-    inquirer.prompt(questions)
-    .then(function (userInput){
-        console.log(userInput)
-        writeToFile("README.md", generateMarkdown(userInput));
-    });
-};
+// function init() {
+//     inquirer.prompt(questions)
+//     .then(function (userInput){
+//         console.log(userInput)
+//         writeToFile("README.md", generateMarkdown(userInput));
+//     });
+// };
 
 // Function call to initialize app
-init().then((answers) => {
-});
+// init().then((answers) => {
+// });
