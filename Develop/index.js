@@ -13,32 +13,68 @@ const questions = ([
     },
     {
         type: 'input',
-        message: '',
-        name:'',
+        message: 'What is a brief description of your application?',
+        name:'description',
         validate: (value)=>{ if(value){return true} else{return 'Invalid Value'}},
     },
     {
         type: 'input',
-        message: '',
-        name:'',
+        message: 'What was your motivation for this application?',
+        name:'motivation',
         validate: (value)=>{ if(value){return true} else{return 'Invalid Value'}},
     },
     {
         type: 'input',
-        message: '',
-        name:'',
+        message: 'Why did you build this application?',
+        name:'why',
         validate: (value)=>{ if(value){return true} else{return 'Invalid Value'}},
     },
     {
         type: 'input',
-        message: '',
-        name:'',
+        message: 'What problem does it solve?',
+        name:'solved',
         validate: (value)=>{ if(value){return true} else{return 'Invalid Value'}},
     },
     {
         type: 'input',
-        message: '',
-        name:'',
+        message: 'What did you learn with creating this application?',
+        name:'what',
+        validate: (value)=>{ if(value){return true} else{return 'Invalid Value'}},
+    },
+    {
+        type: 'input',
+        message: 'What steps are required to install your application?',
+        name:'install',
+        validate: (value)=>{ if(value){return true} else{return 'Invalid Value'}},
+    },
+    {
+        type: 'input',
+        message: 'Are there any collaborators on this application?',
+        name:'collabs',
+        validate: (value)=>{ if(value){return true} else{return 'Invalid Value'}},
+    },
+    {
+        type: 'input',
+        message: 'Did you use any licenses for this application?',
+        name:'licenses',
+        validate: (value)=>{ if(value){return true} else{return 'Invalid Value'}},
+    },
+    {
+        type: 'input',
+        message: 'What is your GitHub?',
+        name:'github',
+        validate: (value)=>{ if(value){return true} else{return 'Invalid Value'}},
+    },
+    {
+        type: 'input',
+        message: 'What is your LinkedIn?',
+        name:'linkedin',
+        validate: (value)=>{ if(value){return true} else{return 'Invalid Value'}},
+    },
+    {
+        type: 'input',
+        message: 'What is your email?',
+        name:'email',
         validate: (value)=>{ if(value){return true} else{return 'Invalid Value'}},
     },
 ];
@@ -46,23 +82,30 @@ const questions = ([
     titles
 })=>{
     const template = `# ${title}
-    * [Installation]($installation)
-    * [Usage]($usage)
-    * [Contribution]($contribution)
-    * [Credits]($credits)
-    * [License]($license)
-    # Installation
-    ${installation}
-    ## Usage
-    ${usage}
-    ## Contribution
-    ${contribution}
-    ## Instructions
-    ${instructions}
-    ## Credits
-    ${credits}
-    ## License
-    ${license}
+    * [Description]($description)
+    * [Motivation]($motivation)
+    * [Why]($why)
+    * [Solved]($solved)
+    * [What]($what)
+    * [Install]($install)
+    * [Collabs]($collabs)
+    * [Licenses]($licenses)
+    # Description
+    ${description}}
+    ## Motivation
+    ${motivation}
+    ## Why
+    ${why}
+    ## Solved
+    ${solved}
+    ## What
+    ${what}
+    ## Install
+    ${Install}
+    ## Collabs
+    ${collabs}
+    ##Licenses
+    ${licenses}
 
     # Contact
     *GitHub:${git}
