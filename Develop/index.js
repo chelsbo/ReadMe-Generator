@@ -6,13 +6,13 @@ console.log ("Welcome to the READme Generator")
 console.log ("Please provide answers to the following questions")
 
 // TODO: Create an array of questions for user input
-const questions = ([
+// const questions = ([
 inquirer
     .prompt([
     {
         type: 'input',
-        message: 'title',
-        name:'What is the name of your application?',
+        message: 'What is the name of your application?',
+        name:'title',
         validate: (value)=>{ 
             if(value)
             {return true;
@@ -155,60 +155,69 @@ inquirer
     }
 ]
 )
-// then(({
-//     titles
-// })=>{
-//     const template = `# ${title}
-//     * [Description]($description)
-//     * [Motivation]($motivation)
-//     * [Why]($why)
-//     * [Solved]($solved)
-//     * [What]($what)
-//     * [Install]($install)
-//     * [Collabs]($collabs)
-//     * [Licenses]($licenses)
-//     # Description
-//     ${description}}
-//     ## Motivation
-//     ${motivation}
-//     ## Why
-//     ${why}
-//     ## Solved
-//     ${solved}
-//     ## What
-//     ${what}
-//     ## Install
-//     ${Install}
-//     ## Collabs
-//     ${collabs}
-//     ##Licenses
-//     ${licenses}
+// .then((answers) => {
+// })
 
-//     # Contact
-//     *GitHub:${git}
-//     *LinkedIn :${linkedin}
-//     #Email: ${email}`;
+then(({
+    titles
+})=>{
+    const template = `# ${title}
+    * [Description]($description)
+    * [Motivation]($motivation)
+    * [Why]($why)
+    * [Solved]($solved)
+    * [What]($what)
+    * [Install]($install)
+    * [Collabs]($collabs)
+    * [Licenses]($licenses)
+    # Description
+    ${description}}
+    ## Motivation
+    ${motivation}
+    ## Why
+    ${why}
+    ## Solved
+    ${solved}
+    ## What
+    ${what}
+    ## Install
+    ${Install}
+    ## Collabs
+    ${collabs}
+    ##Licenses
+    ${licenses}
 
-// }
-// )
+    # Contact
+    *GitHub:${git}
+    *LinkedIn :${linkedin}
+    #Email: ${email}`;
+
+}
+)
+// .then((answers) => {
+// })
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
-    fs.writeFile(`./${fileName.toLowerCase(x).split('').join('').md ,data,(err)=>{
+    fs.writeToFile(`./${fileName.toLowerCase(x).split('').join('').md ,data,(err)=>{
 if(err){
     console.log(err)
 }
+
 console.log('Your ReadMe has been generated'); 
     }}`)
 }
 
+
+
 // TODO: Create a function to initialize app
-// function init() {
-//     inquirer.prompt(questions)
-//     .then(function (userInput){
-//         console.log(userInput)
-//         writeToFile("README.md", generateMarkdown(userInput));
-//     });
-// };
+function init() {
+    inquirer.prompt(questions)
+    .then(function (userInput){
+        console.log(userInput)
+        writeToFile("README.md", generateMarkdown(userInput));
+    });
+};
 
 // Function call to initialize app
-// init()
+init().then((answers) => {
+});
