@@ -1,10 +1,14 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
-const { message } = require('statuses');
+const generateMarkdown = require('./utils.generateMarkdown.js');
+console.log ("Welcome to the READme Generator")
+console.log ("Please provide answers to the following questions")
 
 // TODO: Create an array of questions for user input
 const questions = ([
+inquirer
+    .prompt([
     {
         type: 'input',
         message: 'title',
@@ -148,8 +152,9 @@ const questions = ([
                 console.log('Invalid Value')
             }
         },
-    },
-])
+    }
+]
+)
 // then(({
 //     titles
 // })=>{
@@ -198,7 +203,7 @@ console.log('Your ReadMe has been generated');
 
 // TODO: Create a function to initialize app
 function init() {
-    inquirer.createPromptModule(questions)
+    inquirer.prompt(questions)
     .then(function (userInput){
         console.log(userInput)
         writeToFile("README.md", generateMarkdown(userInput));
