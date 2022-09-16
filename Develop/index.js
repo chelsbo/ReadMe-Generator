@@ -77,8 +77,8 @@ const questions = ([
         name:'email',
         validate: (value)=>{ if(value){return true} else{return 'Invalid Value'}},
     },
-];
-).then(({
+])
+then(({
     titles
 })=>{
     const template = `# ${title}
@@ -115,10 +115,17 @@ const questions = ([
 }
 )
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+function writeToFile(fileName, data) {
+    fs.writeFile(`./${fileName.toLowerCase(x).split('').join('').md ,data,(err)=>{
+if(err){
+    console.log(err)
+}
+console.log('Your ReadMe has been generated'); 
+    }}`)
+}
 
 // TODO: Create a function to initialize app
 function init() {}
 
 // Function call to initialize app
-init();
+// init();
