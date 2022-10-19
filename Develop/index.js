@@ -1,7 +1,8 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
-// const generateMarkdown = require('./utils.generateMarkdown.js');
+// const generateMarkdown = require('./utils/generateMarkdown.js');
+const generateMarkdown = require('./utils/generateMarkdown');
 console.log ("Welcome to the READme Generator")
 console.log ("Please provide answers to the following questions")
 
@@ -181,12 +182,8 @@ inquirer
     ## Collabs
     ${answers.collabs}
     ##Licenses
-    ${answers.licenses}
+    ${answers.licenses}`;
 
-    # Contact
-    *GitHub : ${git}
-    *LinkedIn : ${linkedin}
-    #Email : ${email}`;
 
 }
 )
@@ -206,14 +203,47 @@ console.log('Your ReadMe has been generated');
 
 
 // TODO: Create a function to initialize app
-// function init() {
-//     inquirer.prompt(questions)
-//     .then(function (userInput){
-//         console.log(userInput)
-//         writeToFile("README.md", generateMarkdown(userInput));
-//     });
-// };
+function init() {
+    inquirer.prompt(questions)
+    .then(function (userInput){
+        console.log(userInput)
+        writeToFile("README.md", generateMarkdown(userInput));
+    });
+};
 
 // Function call to initialize app
-// init().then((answers) => {
-// });
+ function writeToFile(data){
+    return new Promise((resolve, reject) => {
+        // make a readme file and add to dist folder
+        fs.writeFile('./dist/README.md', data, err => {
+            // if there's an error, reject the Promise and send the error to .catch() method
+            if (err) {
+                reject (err);
+                // return out of the function here to make sure the Promise doesn't continut to execute the resolve() function
+                return;
+            }
+            // if everything went well, resolve the Promise and send the successful data to the .then() method
+            resolve({
+                ok: true,
+                message: console.log('Success! Navigate to the "dist" folder to see your README!')
+            });
+        })
+    })
+}
+
+// Initialize app
+function init(){
+    return inquirer.prompt(questions);
+}
+
+// Function call to initialize app
+init()
+.then(userInput => {
+    return generateMarkdown(userInput);
+})
+.then(readmeInfo => {
+    return writeToFile(readmeInfo);
+})
+.catch(err => {
+    console.log(err);
+});
